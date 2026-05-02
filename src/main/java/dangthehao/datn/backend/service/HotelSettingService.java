@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -34,5 +36,13 @@ public class HotelSettingService {
 
   public List<HotelSettingItemPrj> getAllSetting() {
     return hotelSettingRepo.findAllSetting();
+  }
+
+  public Map<String, String> getCheckInOutPolicy() {
+    Map<String, String> result = new HashMap<>();
+    hotelSettingRepo
+        .findCheckInOutPolicy()
+        .forEach(h -> result.put(h.getSettingKey().toLowerCase(), h.getSettingValue()));
+    return result;
   }
 }

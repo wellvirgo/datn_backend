@@ -34,6 +34,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -212,6 +213,8 @@ public class BookingService {
             .getDisplayText();
     history.setCancellationDisplayText(cancellationPolicy);
 
+    Map<String, String> checkInOutPolicy = hotelSettingService.getCheckInOutPolicy();
+
     List<DetailHistoryItemRes> details = new ArrayList<>();
     booking
         .getBookingDetails()
@@ -221,6 +224,8 @@ public class BookingService {
               details.add(detailItem);
             });
     history.setDetails(details);
+    history.setCheckInTime(checkInOutPolicy.getOrDefault("check_in_time", ""));
+    history.setCheckOutTime(checkInOutPolicy.getOrDefault("check_out_time", ""));
 
     return history;
   }

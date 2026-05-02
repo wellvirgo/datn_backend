@@ -17,6 +17,11 @@ public interface HotelSettingRepository extends JpaRepository<HotelSetting, Stri
   @Query("select h from HotelSetting h where h.settingKey = 'PAYMENT_DEADLINE_MINUTES'")
   Optional<HotelSetting> findPaymentDeadline();
 
-  @Query("select new dangthehao.datn.backend.dto.hotelSetting.HotelSettingItemPrj(settingKey, settingValue, description) from HotelSetting where isPublic = true")
+  @Query(
+      "select new dangthehao.datn.backend.dto.hotelSetting.HotelSettingItemPrj(settingKey, settingValue, description) from HotelSetting where isPublic = true")
   List<HotelSettingItemPrj> findAllSetting();
+
+  @Query(
+      "select h from HotelSetting h where h.settingKey in ('CHECK_IN_TIME', 'CHECK_OUT_TIME') and h.isPublic = true")
+  List<HotelSetting> findCheckInOutPolicy();
 }

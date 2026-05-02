@@ -41,7 +41,10 @@ public class SecurityConfig {
     "/stripe/ipn"
   };
   private static final String[] PUBLIC_GET_ENDPOINTS = {
-    "/room-types/**", "/users/**", "/api/v1/room-types/{id}"
+    "/room-types/**",
+    "/users/**",
+    "/api/v1/room-types/{id}",
+    "/api/v1/hotel-settings/check-in-out-policy"
   };
 
   private final AuthenticationEntryPoint authenticationEntryPoint;

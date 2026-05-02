@@ -32,4 +32,6 @@ public class BookingHistoryItemRes {
   String cancellationDisplayText;
   List<DetailHistoryItemRes> details;
   LocalDate createdAt;
+  String checkInTime;
+  String checkOutTime;
 }
