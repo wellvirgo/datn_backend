@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @DateRange(message = "Ngày trả phòng không hợp lệ")
-
 public class CheckAvailabilityReq {
   @NotNull(message = "Ngày nhận phòng không được để trống")
   @FutureOrPresent(message = "Ngày nhận phòng không được trong quá khứ")

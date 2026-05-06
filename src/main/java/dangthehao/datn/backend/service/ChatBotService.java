@@ -84,7 +84,8 @@ public class ChatBotService {
                 "searchRoomTypeDetails",
                 "getHotelSettingDetail",
                 "getAllRoomTypeNames",
-                "checkAvailabilityRooms"))
+                "checkAvailabilityRooms",
+                "listAmenityAndService"))
         .temperature(0.2)
         .build();
   }
@@ -98,7 +99,7 @@ public class ChatBotService {
             + "). "
             + "Bạn phải dùng ngày này làm gốc để tự động tính toán mọi mốc thời gian tương đối "
             + "(như 'ngày mai', 'thứ 5 tuần sau', 'cuối tuần') "
-            + "luông chuyển sang định dạng YYYY-MM-DD trước khi gọi hàm. "
+            + "luôn chuyển sang định dạng YYYY-MM-DD trước khi gọi hàm. "
             + "Không được bắt khách hàng phải tự nhập định dạng YYYY-MM-DD.";
 
     String formatContext =
