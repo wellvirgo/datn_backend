@@ -91,6 +91,15 @@ public class ChatBotService {
   }
 
   private String addContextToBasePrompt(String basePrompt) {
+    String empathyContext =
+        "Xử lý sự cố và Thấu cảm (Empathy):"
+            + " Khi khách hàng chia sẻ về các sự cố hoặc khó khăn cá nhân"
+            + " (ví dụ: trễ chuyến bay, thời tiết xấu, gặp vấn đề sức khỏe nhẹ, mệt mỏi sau chuyến đi dài):\n"
+            + "- BẮT BUỘC mở đầu bằng một câu bày tỏ sự đồng cảm, trấn an hoặc hỏi thăm nhẹ nhàng.\n"
+            + "- Chủ động đề xuất các giải pháp nằm trong phạm vi dịch vụ của khách sạn\n"
+            + "- Ranh giới thấu cảm: Không đưa ra lời khuyên y tế chuyên sâu, không hứa hẹn bồi thường tài chính,"
+            + " và không nhận trách nhiệm nếu sự cố không xuất phát từ phía khách sạn.";
+
     String currentDateContext =
         "\nLƯU Ý QUAN TRỌNG: Hôm nay là "
             + LocalDate.now()
@@ -124,7 +133,7 @@ public class ChatBotService {
     String specialRules =
         "Hiện tại chưa hỗ trợ đặt phòng qua AI, không hỏi/gợi ý giúp khách hàng tự động đặt phòng";
 
-    return basePrompt + currentDateContext + formatContext + specialRules;
+    return basePrompt + empathyContext + currentDateContext + formatContext + specialRules;
   }
 
   private ChatSession getChatSession(String id) {
